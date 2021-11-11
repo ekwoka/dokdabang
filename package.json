@@ -24,6 +24,7 @@
   "dependencies": {
     "@alpinejs/collapse": "^3.5.1",
     "@alpinejs/intersect": "^3.5.1",
+    "@ekwoka/persistedstore": "^0.1.1",
     "@ekwoka/x-rias": "^0.2.2",
     "@tailwindcss/aspect-ratio": "^0.3.0",
     "@tailwindcss/forms": "^0.3.4",
