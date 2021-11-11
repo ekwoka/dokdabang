@@ -9,6 +9,7 @@
     "watch:liquid": "nodemon --watch build/liquid -e liquid,js build/liquid.js",
     "watch:js": "esbuild ./build/in.js --platform=browser --target=es2017 --outfile=./src/assets/build.min.js --bundle --watch --define:ALPINE_VERSION='\"CUSTOM\"' --define:DEBUG_ON='true'",
     "watch:css": "tailwindcss -i ./build/styles.pre.css -o ./src/assets/styles.min.css --jit -w --config tailwind.config.js",
+    "watch:netlify": "netlify dev",
     "update": "ncu -u && rm -rf node_modules && pnpm i && npm run build && git add . && git commit -m ':arrow_up:' && npm version patch"
   },
   "devDependencies": {
@@ -24,6 +25,8 @@
     "@alpinejs/collapse": "^3.5.1",
     "@alpinejs/intersect": "^3.5.1",
     "@ekwoka/x-rias": "^0.2.2",
+    "@tailwindcss/aspect-ratio": "^0.3.0",
+    "@tailwindcss/forms": "^0.3.4",
     "alpinejs": "^3.5.1"
   },
   "version": "0.0.1"

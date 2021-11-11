@@ -3,3 +3,5 @@ node_modules
 src/*.html
 src/**/*.js
 src/**/*.css
+# Local Netlify folder
+.netlify
