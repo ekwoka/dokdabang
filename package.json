@@ -15,20 +15,20 @@
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.2.2",
     "@tailwindcss/typography": "^0.4.1",
-    "esbuild": "^0.13.13",
+    "esbuild": "^0.13.15",
     "liquidjs": "^9.28.5",
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
     "tailwindcss": "^2.2.19"
   },
   "dependencies": {
-    "@alpinejs/collapse": "^3.5.1",
-    "@alpinejs/intersect": "^3.5.1",
+    "@alpinejs/collapse": "^3.5.2",
+    "@alpinejs/intersect": "^3.5.2",
     "@ekwoka/persistedstore": "^0.1.1",
     "@ekwoka/x-rias": "^0.2.3",
     "@tailwindcss/aspect-ratio": "^0.3.0",
     "@tailwindcss/forms": "^0.3.4",
-    "alpinejs": "^3.5.1"
+    "alpinejs": "^3.5.2"
   },
-  "version": "0.2.1"
+  "version": "0.2.2"
 }
