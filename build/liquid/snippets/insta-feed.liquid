@@ -1,0 +1,21 @@
+<section>
+  <instagram-feed class="block max-w-2xl px-4 mx-auto sm:px-6 lg:max-w-7xl lg:px-8" x-data="instagram">
+    <h2 id="insta-heading" class="sr-only">Check our Instagram</h2>
+  
+    <insta-grid class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:gap-x-8">
+      <template x-for="post in posts" :key="post.timestamp">
+        <insta-item class="group">
+          <insta-image class="block w-full overflow-hidden rounded-lg aspect-w-1 aspect-h-1 sm:aspect-w-2 sm:aspect-h-3">
+            <img :src="post.image" alt="Instagram post" :width="post.dimensions.width" :height="post.dimensions.height" class="object-cover object-center w-full h-full group-hover:opacity-75" />
+          </insta-image>
+          <insta-details class="flex items-center justify-between mt-4 text-base font-medium text-gray-900">
+            <h3 x-text="`${post.likes} Likes"></h3>
+            <p x-text="`${post.comments} Comments"></p>
+          </insta-details>
+        </insta-item>
+      </template>
+  
+      <!-- More products... -->
+    </insta-grid>
+  </instagram-feed>
+</section>
