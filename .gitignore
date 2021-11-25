@@ -3,6 +3,7 @@ node_modules
 src/*.html
 src/**/*.js
 src/**/*.css
+src/**/*.html
 # Local Netlify folder
 .netlify
 .DS_Store
