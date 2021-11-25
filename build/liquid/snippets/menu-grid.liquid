@@ -1,0 +1,23 @@
+<div class="bg-white">
+  <div class="max-w-2xl px-4 py-16 mx-auto sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+    <h2 id="products-heading" class="sr-only">Products</h2>
+
+    <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:gap-x-8">
+      {% for item in menu %}
+      <a href="/menu/{{ item.handle }}" class="group" x-data="{
+        title: '{{ item.title }}',
+        price: {{ item.price }},
+        image: '{{ item.image }}'
+      }">
+        <div class="w-full overflow-hidden rounded-lg aspect-w-1 aspect-h-1 sm:aspect-w-2 sm:aspect-h-3">
+          <img x-rias="image" class="object-cover object-center w-full h-full group-hover:opacity-75" />
+        </div>
+        <div class="flex items-center justify-between mt-4 text-base font-medium text-gray-900">
+          <h3 x-text="title"></h3>
+          <p x-text="priceFormatter.format(price)"></p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>

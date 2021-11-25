@@ -3,10 +3,10 @@
     <nav-wrapper class="fixed inset-0 z-40 flex lg:hidden" role="dialog" aria-modal="true" x-show="mobileMenuOpen" x-cloak :aria-expanded="mobileMenuOpen">
 
       <drawer-backdrop class="fixed inset-0 block bg-black bg-opacity-60 backdrop-saturate-100" aria-hidden="true" x-show="mobileMenuOpen" x-cloak
-        x-transition:enter="transition-opacity ease-out duration-500"
+        x-transition:enter="transition-all ease-out duration-500"
         x-transition:enter-start="opacity-0 backdrop-saturate-0"
         x-transition:enter-end="opacity-100 backdrop-saturate-100"
-        x-transition:leave="transition-opacity ease-in duration-300"
+        x-transition:leave="transition-all ease-in duration-300"
         x-transition:leave-start="opacity-100 backdrop-saturate-100"
         x-transition:leave-end="opacity-0 backdrop-saturate-0"></drawer-backdrop>
 
@@ -64,7 +64,7 @@
                   </button>
   
                   <!-- Search -->
-                  <a href="#" class="p-2 ml-2 text-gray-400 hover:text-gray-500">
+                  <a href="#" class="hidden p-2 ml-2 text-gray-400 hover:text-gray-500">
                     <span class="sr-only">Search</span>
                     <!-- Heroicon name: outline/search -->
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -80,7 +80,7 @@
                 </a>
   
                 <div class="flex items-center justify-end flex-1">
-                  <a href="#" class="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">
+                  <a href="#" class="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:hidden">
                     Search
                   </a>
   
@@ -95,14 +95,12 @@
                     </a>
                     <a href="#" class="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">Help</a>
   
-                    <!-- Cart -->
                     <div class="flow-root ml-4 lg:ml-8">
-                      <a href="#" class="flex items-center p-2 -m-2 group">
-                        <!-- Heroicon name: outline/shopping-bag -->
+                      <a href="#" class="flex items-center p-2 -m-2 group" @click.prevent="cartDrawerIsOpen=true">
                         <svg class="flex-shrink-0 w-6 h-6 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                         </svg>
-                        <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
+                        <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800" x-text="$store.cart.quantity">0</span>
                         <span class="sr-only">items in cart, view bag</span>
                       </a>
                     </div>
@@ -114,5 +112,8 @@
         </div>
       </nav>
     </header>
+
+    {%- render 'side-cart', settings: settings -%}
+
   </header-ui>
   

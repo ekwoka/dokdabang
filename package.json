@@ -28,7 +28,8 @@
     "@ekwoka/x-rias": "^0.2.3",
     "@tailwindcss/aspect-ratio": "^0.3.0",
     "@tailwindcss/forms": "^0.3.4",
-    "alpinejs": "^3.5.2"
+    "alpinejs": "^3.5.2",
+    "node-fetch": "^3.1.0"
   },
   "version": "0.2.2"
 }
