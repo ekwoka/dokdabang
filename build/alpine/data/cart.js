@@ -11,7 +11,7 @@ export default function(Alpine) {
             }, 0)
         },
         init() {
-            console.log(this.items)
+            DEBUG_ON && console.log(this.items)
         },
         format(price) {
             return priceFormatter.format(price)

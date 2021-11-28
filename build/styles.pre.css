@@ -5,3 +5,15 @@
 [x-cloak] {
   display: none;
 }
+
+progress.review-bar[value] {
+  @apply appearance-none w-full h-3 rounded-md overflow-hidden shadow-inner border border-yellow-500
+}
+
+progress.review-bar[value]::-webkit-progress-bar {
+  @apply bg-gray-100 
+}
+
+progress.review-bar[value]::-webkit-progress-value {
+  @apply bg-yellow-500 rounded-md
+}

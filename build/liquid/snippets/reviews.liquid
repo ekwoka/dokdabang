@@ -1,0 +1,62 @@
+<!-- This example requires Tailwind CSS v2.0+ -->
+<section class="block bg-white">
+    <reviews-section class="block max-w-2xl px-4 py-16 mx-auto sm:py-24 sm:px-6 lg:max-w-7xl lg:py-32 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-8">
+      <reviews-overview class="block lg:col-span-4">
+        <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">Customer Reviews</h2>
+  
+        {%- render 'reviews-badge', reviews: item.reviews, section: true -%}
+  
+        <div class="mt-6">
+          <h3 class="sr-only">Review data</h3>
+  
+          <dl class="space-y-3">
+            {%- render 'reviews-bars', value: 5, total: item.reviews.count, count: 1235 -%}
+  
+            {%- render 'reviews-bars', value: 4, total: item.reviews.count, count: 222 -%}
+  
+            {%- render 'reviews-bars', value: 3, total: item.reviews.count, count: 78 -%}
+  
+            {%- render 'reviews-bars', value: 2, total: item.reviews.count, count: 60 -%}
+  
+            {%- render 'reviews-bars', value: 1, total: item.reviews.count, count: 40 -%}
+          </dl>
+        </div>
+  
+        <div class="mt-10">
+          {% comment %} TODO: Add actual system for saving and reshowing reviews. {% endcomment %}
+          <h3 class="text-lg font-medium text-gray-900">Share your thoughts</h3>
+          <p class="mt-1 text-sm text-gray-600">If you’ve used this product, share your thoughts with other customers</p>
+  
+          <a href="#" class="inline-flex items-center justify-center w-full px-8 py-2 mt-6 text-sm font-medium text-gray-900 bg-white border border-gray-300 rounded-md hover:bg-gray-50 sm:w-auto lg:w-full">Write a review</a>
+        </div>
+      </reviews-overview>
+  
+      <div class="mt-16 lg:mt-0 lg:col-start-6 lg:col-span-7">
+        <h3 class="sr-only">Recent reviews</h3>
+  
+        <div class="flow-root">
+          <div class="-my-12 divide-y divide-gray-200">
+            <div class="py-12">
+              <div class="flex items-center">
+                <img x-data x-rias="'/assets/images/eric.jpeg'" alt="Eric Kwoka." class="w-12 h-12 rounded-full" loading="lazy">
+                <div class="ml-4">
+                  <h4 class="text-sm font-bold text-gray-900">Eric Kwoka</h4>
+                  <div class="flex items-center mt-1">
+                    {%- render 'reviews-stars', average: 5 -%}
+                  </div>
+                  <p class="sr-only">5 out of 5 stars</p>
+                </div>
+              </div>
+  
+              <div class="mt-4 space-y-6 text-base italic text-gray-600">
+                <p>This is a great dang drink! Seriously. It's hydrating as all heck!</p>
+              </div>
+            </div>
+  
+            <!-- More reviews... -->
+          </div>
+        </div>
+      </div>
+    </reviews-section>
+  </section>
+  

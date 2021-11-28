@@ -1,0 +1,16 @@
+<review-stars class="block {%- unless section == true %} pl-4 ml-4 border-l border-gray-300 {%- endunless -%}">
+  <h2 class="sr-only">Reviews</h2>
+  <div class="flex items-center">
+    <div>
+      <div class="flex items-center">
+          {%- render 'reviews-stars', average: reviews.average -%}
+      </div>
+    </div>
+    <p class="ml-2 text-gray-500">{{ reviews.average }}
+      {%- unless section == true -%}
+        <span class="hidden md:inline"> out of 5 stars</span>
+      {%- endunless -%}
+    </p>
+    <p class="ml-4 text-gray-500">{{ reviews.count }} reviews</p>
+  </div>
+</review-stars>
