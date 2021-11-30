@@ -1,7 +1,9 @@
 import { Liquid } from 'liquidjs';
-import * as data from './liquid/objects/index.mjs';
 import { mkdirSync, readdir, createWriteStream } from 'fs';
-import menu from './liquid/objects/menu.mjs';
+import * as data from './liquid/objects/data.mjs';
+import pageTypes from './liquid/objects/index.mjs';
+
+console.time('Liquid Rendered')
 
 
 const engine = new Liquid({
@@ -14,27 +16,22 @@ const engine = new Liquid({
 let paths = ['src/assets','src/menu']
 paths.forEach(p=>mkdirSync(p, { recursive: true }))
 
-readdir('build/liquid/pages',async(err,files)=>{
-    if(!files) return console.log('No Liquid Files Found')
-    console.time('Liquid Rendered')
-    let pipes = files.map(f => {
-        f = f.replace('.liquid', '');
-        const output = createWriteStream(`src/${f}.html`);
+let pipes = []
+
+pageTypes.forEach(({type, pages = [], path = ''}) => {
+    pipes.push(...pages.map(page => {
+        let outputPath = `src/${path}${typeof page === 'object'?page.handle:page}.html`
+        let output = createWriteStream(outputPath);
         let pageData = {
             settings: {...data.global} || {},
-            page: {...data[f]} || {}
+            template: {...data[type]} || {},
+            page: {...page} || {}
         }
-        return engine.renderFileToNodeStream(f,pageData||{}).then(stream => stream.pipe(output))
-    })
-    let menuPipes = menu.map(item => {
-        let output = createWriteStream(`src/menu/${item.handle}.html`);
-        let pageData = {
-            settings: {...data.global} || {},
-            page: {...data['product']} || {},
-            menu: {...item} || {}
-        }
-        return engine.renderFileToNodeStream('product',pageData||{}).then(stream => stream.pipe(output))
-    })
-    await Promise.all([...pipes, ...menuPipes])
-    console.timeEnd('Liquid Rendered')
+        return engine.renderFileToNodeStream(type,pageData||{}).then(stream => stream.pipe(output))
+    
+    }))
 })
+
+await Promise.all(pipes)
+
+console.timeEnd('Liquid Rendered')
