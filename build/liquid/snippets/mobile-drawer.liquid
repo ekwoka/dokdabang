@@ -8,6 +8,10 @@
   x-transition:leave="transition ease-in duration-300 transform"
   x-transition:leave-start="translate-x-0"
   x-transition:leave-end="-translate-x-full"
+  @keydown.escape.prevent.stop="mobileMenuOpen = false"
+  x-trap.noscroll.inert="mobileMenuOpen"
+  role="dialog"
+  aria-modal="true"
 >
   <div class="flex px-4 pt-5 pb-2">
     <button type="button" class="inline-flex items-center justify-center p-2 -m-2 text-gray-400 rounded-md" @click="mobileMenuOpen=false">
