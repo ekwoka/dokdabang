@@ -1,9 +1,9 @@
 module.exports = {
-  mode: 'jit',
-  purge: {
-    enabled: true,
-    content: ['./src/**/*.html', '.src/*.html', '.src/*.js']
-  },
+  purge: [
+    './src/**/*.html',
+    '.src/*.html',
+    '.src/*.js'
+  ],
   darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {
@@ -12,26 +12,31 @@ module.exports = {
           css: {
             color: theme('colors.gray.900'),
             a: {
-              color: theme('colors.blue.500')
-            }
+              color: theme('colors.blue.500'),
+            },
           }
         },
         dark: {
           css: {
             color: theme('colors.gray.100'),
             a: {
-              color: theme('colors.blue.500')
+              color: theme('colors.blue.500'),
             },
             'h1, h2, h3, h4, h5, h6': {
-              color: theme('colors.gray.50')
-            }
+              color: theme('colors.gray.50'),
+            },
           }
         }
-      })
-    }
+      }),
+    },
   },
   variants: {
-    extend: {}
+    extend: {},
   },
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/aspect-ratio'), require('@tailwindcss/typography'), require('@tailwindcss/line-clamp')]
-};
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp')
+  ],
+}

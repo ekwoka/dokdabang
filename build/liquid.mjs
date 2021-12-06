@@ -3,7 +3,7 @@ import { mkdirSync, readdir, createWriteStream } from 'fs';
 import * as data from './liquid/objects/data.mjs';
 import pageTypes from './liquid/objects/index.mjs';
 
-
+console.time('Liquid Rendered')
 
 
 const engine = new Liquid({
@@ -13,28 +13,25 @@ const engine = new Liquid({
     partials: ['build/liquid/snippets','build/liquid/icons']
 })
 
-export default async function() {
-    console.time('Liquid Rendered')
-    let paths = ['src/assets','src/menu']
-    paths.forEach(p=>mkdirSync(p, { recursive: true }))
+let paths = ['src/assets','src/menu']
+paths.forEach(p=>mkdirSync(p, { recursive: true }))
+
+let pipes = []
+
+pageTypes.forEach(({type, pages = [], path = ''}) => {
+    pipes.push(...pages.map(page => {
+        let outputPath = `src/${path}${typeof page === 'object'?page.handle:page}.html`
+        let output = createWriteStream(outputPath);
+        let pageData = {
+            settings: {...data.global} || {},
+            template: {...data[type]} || {},
+            page: {...page} || {}
+        }
+        return engine.renderFileToNodeStream(type,pageData||{}).then(stream => stream.pipe(output))
     
-    let pipes = []
-    
-    pageTypes.forEach(({type, pages = [], path = ''}) => {
-        pipes.push(...pages.map(page => {
-            let outputPath = `src/${path}${typeof page === 'object'?page.handle:page}.html`
-            let output = createWriteStream(outputPath);
-            let pageData = {
-                settings: {...data.global} || {},
-                template: {...data[type]} || {},
-                page: {...page} || {}
-            }
-            return engine.renderFileToNodeStream(type,pageData||{}).then(stream => stream.pipe(output))
-        
-        }))
-    })
-    
-    await Promise.all(pipes)
-    
-    console.timeEnd('Liquid Rendered')
-}
+    }))
+})
+
+await Promise.all(pipes)
+
+console.timeEnd('Liquid Rendered')
