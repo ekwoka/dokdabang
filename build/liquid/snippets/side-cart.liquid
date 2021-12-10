@@ -1,4 +1,4 @@
-<cart-drawer class="fixed inset-0 z-10 block overflow-hidden" aria-labelledby="cart-title" role="dialog" aria-modal="true" x-show="cartDrawerIsOpen" x-cloak :tabindex="cartDrawerIsOpen?0:-1" @keydown.escape.prevent.stop="cartDrawerIsOpen = false">
+<cart-drawer class="fixed inset-0 z-10 block overflow-hidden" aria-labelledby="cart-title" role="dialog" aria-modal="true" x-show="$store.cartIsOpen" x-cloak :tabindex="$store.cartIsOpen?0:-1" @keydown.escape.prevent.stop="$store.cartIsOpen = false">
       <cart-backdrop class="absolute inset-0 block transition-all bg-black bg-opacity-60 backdrop-saturate-100" aria-hidden="true"
       x-transition:enter="ease-in duration-500"
       x-transition:enter-start="opacity-0"
@@ -6,9 +6,9 @@
       x-transition:leave="ease-out duration-300"
       x-transition:leave-start="opacity-100"
       x-transition:leave-end="opacity-0"
-      x-show="cartDrawerIsOpen"
+      x-show="$store.cartIsOpen"
       x-cloak
-      @click="cartDrawerIsOpen=false"> </cart-backdrop>
+      @click="$store.cartIsOpen=false"> </cart-backdrop>
   
       <div class="fixed inset-y-0 right-0 flex max-w-full pl-10">
         <cart-wrapper class="block w-screen max-w-md"
@@ -18,10 +18,10 @@
         x-transition:leave="transform transition ease-in duration-300 sm:duration-700"
         x-transition:leave-start="translate-x-0"
         x-transition:leave-end="translate-x-full"
-        x-show="cartDrawerIsOpen"
+        x-show="$store.cartIsOpen"
         x-cloak
         x-data="cart"
-        x-trap.noscroll.inert="cartDrawerIsOpen"
+        x-trap.noscroll.inert="$store.cartIsOpen"
         role="dialog"
         aria-modal="true">
           <div class="flex flex-col h-full overflow-y-scroll bg-white shadow-xl">
@@ -31,7 +31,7 @@
                   Order Summary
                 </h2>
                 <div class="flex items-center ml-3 h-7">
-                  <button type="button" class="p-2 -m-2 text-gray-400 hover:text-gray-700" @click="cartDrawerIsOpen=false">
+                  <button type="button" class="p-2 -m-2 text-gray-400 hover:text-gray-700" @click="$store.cartIsOpen=false">
                     <span class="sr-only">Close Order Panel</span>
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -63,7 +63,7 @@
                           </p>
   
                           <div class="flex">
-                            <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500" @click="remove(item)">Remove</button>
+                            <button type="button" class="font-medium text-emerald-600 hover:text-emerald-500" @click="remove(item)">Remove</button>
                           </div>
                         </div>
                       </item-info>
@@ -79,11 +79,11 @@
               </div>
               <p class="mt-0.5 text-gray-700">Shipping and taxes calculated at checkout.</p>
               <div class="mt-6">
-                <a href="#" class="flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md s hover:bg-indigo-700">Checkout</a>
+                <button href="#" class="flex items-center justify-center w-full px-6 py-3 text-base font-medium text-white transition-colors border border-transparent rounded-md bg-emerald-600 s hover:bg-emerald-700 disabled:bg-gray-700/50" :disabled="total == 0">Checkout</button>
               </div>
               <div class="flex justify-center mt-6 text-center text-gray-700">
                 <p>
-                  or <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500" @click="cartDrawerIsOpen=false">Continue Shopping<span aria-hidden="true"> &rarr;</span></button>
+                  or <button type="button" class="font-medium text-emerald-600 hover:text-emerald-500" @click="$store.cartIsOpen=false">Continue Shopping<span aria-hidden="true"> &rarr;</span></button>
                 </p>
               </div>
             </div>

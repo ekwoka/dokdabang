@@ -26,7 +26,7 @@
     <tab-buttons class="flex px-4 -mb-px space-x-8 border-b border-gray-200" aria-orientation="horizontal" role="tablist">
       {%- for link in settings.navigation.main -%}
         {%- if link.flyout -%}
-          <button id="tabs-1-tab-1" class="flex-1 px-1 py-4 text-base font-medium border-b-2 whitespace-nowrap" aria-controls="tabs-1-panel-1" role="tab" type="button" @click="selectedTab='{{ link.title | replace: ' ', '-' }}'" :class="selectedTab==='{{ link.title | replace: ' ', '-' }}'?'text-indigo-600 border-indigo-600':'text-gray-900 border-transparent'">
+          <button id="tabs-1-tab-1" class="flex-1 px-1 py-4 text-base font-medium border-b-2 whitespace-nowrap" aria-controls="tabs-1-panel-1" role="tab" type="button" @click="selectedTab='{{ link.title | replace: ' ', '-' }}'" :class="selectedTab==='{{ link.title | replace: ' ', '-' }}'?'text-emerald-600 border-emerald-600':'text-gray-900 border-transparent'">
             {{ link.title | capitalize }}
           </button>
         {%- endif -%}
@@ -44,18 +44,9 @@
     {%- for link in settings.navigation.main -%}
       {%- unless link.flyout -%}
         <div class="flow-root">
-          <a href="#" class="block p-2 -m-2 font-medium text-gray-900">{{ link.title | capitalize }}</a>
+          <a href="{{ link.url | default: '#' }}" class="block p-2 -m-2 font-medium text-gray-900">{{ link.title | capitalize }}</a>
         </div>
       {%- endunless -%}
     {%- endfor -%}
   </secondary-links>
-
-  <tertiary-links class="block px-4 py-6 space-y-6 border-t border-gray-200">
-    <div class="flow-root">
-      <a href="#" class="block p-2 -m-2 font-medium text-gray-900">Create an account</a>
-    </div>
-    <div class="flow-root">
-      <a href="#" class="block p-2 -m-2 font-medium text-gray-900">Sign in</a>
-    </div>
-  </tertiary-links>
 </nav-drawer>

@@ -4,9 +4,9 @@
     {%- for item in link.items -%}
     <grid-item class="relative block group">
       <div class="overflow-hidden bg-gray-100 rounded-md aspect-w-1 aspect-h-1 group-hover:opacity-75">
-        <img x-rias="'{{ item.img }}'" alt="Models sitting back to back, wearing Basic Tee in black and bone." class="object-cover object-center" />
+        <img x-rias="'{{ item.img }}'" alt="{{ item.label }}" class="object-cover object-center" />
       </div>
-      <a href="#" class="block mt-6 text-sm font-medium text-gray-900">
+      <a href="{{ item.url }}" class="block mt-6 text-sm font-medium text-gray-900">
         <span class="absolute inset-0 z-10" aria-hidden="true"></span>
         {{ item.label | capitalize}}
       </a>

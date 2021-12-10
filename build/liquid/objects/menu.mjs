@@ -12,11 +12,11 @@ export default [
             'iced',
             'hot'
         ],
-        image: 'https://placekitten.com/1000/1000'
+        image: '/assets/images/green-tea-latte.jpg'
     },
     {
         title: 'Cafe Latte',
-        handle: 'cafe-latter',
+        handle: 'cafe-latte',
         description: 'A latte made with coffee',
         price: 6200,
         reviews: {
@@ -27,7 +27,7 @@ export default [
             'iced',
             'hot'
         ],
-        image: 'https://placekitten.com/1010/1010'
+        image: '/assets/images/cafe-latte.jpg'
     },
     {
         title: 'Cafe Espresso',
@@ -42,7 +42,7 @@ export default [
             'iced',
             'hot'
         ],
-        image: 'https://placekitten.com/1020/1020'
+        image: '/assets/images/espresso.jpg'
     },
     {
         title: 'Cafe Americano',
@@ -57,7 +57,7 @@ export default [
             'iced',
             'hot'
         ],
-        image: 'https://placekitten.com/1030/1030'
+        image: '/assets/images/americano.jpg'
     },
     {
         title: 'Cappuccino',
@@ -72,7 +72,7 @@ export default [
             'iced',
             'hot'
         ],
-        image: 'https://placekitten.com/1040/1040'
+        image: '/assets/images/cappuccino.jpg'
     },
     {
         title: 'Mocha Latte',
@@ -87,7 +87,7 @@ export default [
             'iced',
             'hot'
         ],
-        image: 'https://placekitten.com/1050/1050'
+        image: '/assets/images/mocha.jpg'
     },
     {
         title: 'Caramel Macchiato',
@@ -102,6 +102,6 @@ export default [
             'iced',
             'hot'
         ],
-        image: 'https://placekitten.com/1060/1060'
+        image: '/assets/images/macchiato.jpg'
     }
 ]

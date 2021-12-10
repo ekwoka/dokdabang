@@ -10,9 +10,6 @@ export default function(Alpine) {
                 return total + (parseInt(item.price)*item.quantity)
             }, 0)
         },
-        init() {
-            DEBUG_ON && console.log(this.items)
-        },
         format(price) {
             return priceFormatter.format(price)
         },

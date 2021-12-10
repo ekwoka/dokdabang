@@ -16,6 +16,7 @@ export default function(Alpine) {
             }
             delete product.variants
             this.$store.cart.add(product)
+            this.$store.cartIsOpen = true
         }
     }))
 }

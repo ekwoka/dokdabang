@@ -9,4 +9,6 @@ export default function(Alpine) {
             return this.items.reduce((total, item) => total + item.quantity, 0);
         }
     })
+
+    Alpine.store('cartIsOpen', false)
 }
