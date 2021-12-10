@@ -5,7 +5,7 @@
 
 [context.production.environment]
   NODE_VERSION = '17.2.0'
-  NPM_VERSION = '8.2.0'
+  NPM_VERSION = '8.3.0'
 
 [functions]
   node_bundler = "esbuild"
