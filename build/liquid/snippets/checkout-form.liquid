@@ -1,0 +1,202 @@
+<form-background class="absolute top-0 left-0 hidden w-1/2 h-full bg-white lg:block" aria-hidden="true"></form-background>
+<summary-background class="absolute top-0 right-0 hidden w-1/2 h-full lg:block bg-gray-50" aria-hidden="true"></summary-background>
+
+<div class="relative grid grid-cols-1 mx-auto gap-x-16 max-w-7xl lg:px-8 lg:grid-cols-2 xl:gap-x-48">
+  <h1 class="sr-only">Order information</h1>
+
+  <section aria-labelledby="summary-heading" class="px-4 pt-8 pb-8 lg:pt-16 bg-gray-50 sm:px-6 lg:px-0 lg:pb-16 lg:bg-transparent lg:row-start-1 lg:col-start-2" x-data="cart">
+    <order-summary class="block max-w-lg mx-auto lg:max-w-none">
+      <h2 id="summary-heading" class="text-lg font-medium text-gray-900">Order summary</h2>
+
+      <order-contents role="list" class="block text-sm font-medium text-gray-900 divide-y divide-gray-200">
+        <template x-for="(item, index) in items" :key="index">
+          <order-item class="flex items-start py-6 space-x-4">
+            <item-image class="flex-shrink-0 block w-24 h-24 overflow-hidden border border-gray-200 rounded-md">
+              <img x-rias="item.image" :alt="item.title" class="object-cover object-center w-full h-full" />
+            </item-image>
+            <div class="flex-auto space-y-1">
+              <h3 x-text="item.title"></h3>
+              <p class="text-gray-500 capitalize" x-text="item.variant" x-show="item.variant"></p>
+              <p class="text-gray-500" x-text="`Qty ${item.quantity}`">Qty 1</p>
+            </div>
+            <p class="flex-none text-base font-medium" x-text="format(item.price*item.quantity)"></p>
+          </order-item>
+        </template>
+      </order-contents>
+
+      <dl class="hidden pt-6 space-y-6 text-sm font-medium text-gray-900 border-t border-gray-200 lg:block">
+        <div class="flex items-center justify-between">
+          <dt class="text-gray-600">Subtotal</dt>
+          <dd x-text="format(total)"></dd>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <dt class="text-gray-600">Delivery Fee</dt>
+          <dd x-text="format(5000)"></dd>
+        </div>
+
+        <div class="flex items-center justify-between pt-6 border-t border-gray-200">
+          <dt class="text-base">Total</dt>
+          <dd class="text-base" x-text="format(total+5000)"></dd>
+        </div>
+      </dl>
+
+      <mobile-summary class="fixed inset-x-0 bottom-0 z-10 flex flex-col-reverse text-sm font-medium text-gray-900 lg:hidden" x-data="{ open: false }">
+        <div class="relative z-10 px-4 bg-white border-t border-gray-200 sm:px-6">
+          <div class="max-w-lg mx-auto">
+            <button type="button" class="flex items-center w-full py-6 font-medium" aria-expanded="false" @click="open = !open">
+              <span class="mr-auto text-base">Total</span>
+              <span class="mr-2 text-base" x-text="format(total+5000)"></span>
+              <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div>
+
+          <div
+            class="fixed inset-0 bg-black bg-opacity-25"
+            aria-hidden="true"
+            x-transition:enter="transition-opacity ease-linear duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition-opacity ease-linear duration-300"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            x-show="open"
+          ></div>
+
+          <div
+            class="relative px-4 py-6 bg-white sm:px-6"
+            x-transition:enter="transition ease-in-out duration-300 transform"
+            x-transition:enter-start="translate-y-full"
+            x-transition:enter-end="translate-y-0"
+            x-transition:leave="transition ease-in-out duration-300 transform"
+            x-transition:leave-start="translate-y-0"
+            x-transition:leave-end="translate-y-full"
+            x-show="open"
+          >
+            <dl class="max-w-lg mx-auto space-y-6">
+              <div class="flex items-center justify-between">
+                <dt class="text-gray-600">Subtotal</dt>
+                <dd x-text="format(total)"></dd>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <dt class="text-gray-600">Delivery Fee</dt>
+                <dd x-text="format(5000)"></dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </mobile-summary>
+    </order-summary>
+  </section>
+
+  
+  <form class="px-4 pt-0 pb-36 sm:px-6 lg:pb-16 lg:pt-8 lg:px-0 lg:row-start-1 lg:col-start-1" x-data>
+    <div class="pb-4 text-gray-700">Please DO NOT enter any real information in this.</div>
+    <div class="max-w-lg mx-auto lg:max-w-none">
+      <section aria-labelledby="contact-info-heading">
+        <h2 id="contact-info-heading" class="text-lg font-medium text-gray-900">Contact information</h2>
+
+        <floating-label class="block mt-8">
+          <input type="email" x-model="$store.user.email" id="email-address" name="email-address" autocomplete="email" class="block w-full rounded-md shadow-sm" placeholder="Email Address"/>
+          <label for="email-address" class="">Email address</label>
+        </floating-label>
+      </section>
+
+      <section aria-labelledby="payment-heading" class="mt-10">
+        <h2 id="payment-heading" class="text-lg font-medium text-gray-900">Payment details</h2>
+
+        <div class="grid grid-cols-3 mt-4 sm:grid-cols-4 gap-y-6 gap-x-4">
+          <div class="col-span-3 sm:col-span-4">
+
+            <floating-label class="block mt-4">
+              <input type="text" x-model="$store.user.name" id="name-on-card" name="name-on-card" autocomplete="cc-name" class="block w-full rounded-md shadow-sm" placeholder="Name on Card"/>
+              <label for="name-on-card" class="">Name on Card</label>
+            </floating-label>
+          </div>
+
+          <div class="col-span-3 sm:col-span-4">
+            <floating-label class="block mt-4">
+              <input type="text" id="card-number" name="card-number" autocomplete="cc-number"  class="block w-full rounded-md shadow-sm" placeholder="Card number"/>
+              <label for="card-number"  class="">Card number</label>
+            </floating-label>
+          </div>
+
+          <div class="col-span-2 sm:col-span-3">
+            <floating-label class="block mt-4">
+              <input type="text" name="expiration-date" id="expiration-date" autocomplete="cc-exp"  class="block w-full rounded-md shadow-sm" placeholder="Expiration date (MM/YY)"/>
+              <label for="expiration-date"  class="">Expiration date (MM/YY)</label>
+            </floating-label>
+          </div>
+
+          <div>
+            <floating-label class="block mt-4">
+              <input type="text" name="cvc" id="cvc" autocomplete="csc"  class="block w-full rounded-md shadow-sm" placeholder="CVC"/>
+              <label for="cvc"  class="">CVC</label>
+            </floating-label>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="shipping-heading" class="mt-10">
+        <h2 id="shipping-heading" class="text-lg font-medium text-gray-900">Delivery address</h2>
+
+        <div class="grid grid-cols-1 mt-4 gap-y-6 gap-x-4 sm:grid-cols-3">
+          <div class="sm:col-span-3">
+            <floating-label class="block mt-4">
+              <input type="text"  x-model="$store.user.address.street" id="address" name="address" autocomplete="street-address"  class="block w-full rounded-md shadow-sm" placeholder="Street Address"/>
+              <label for="address" class="">Street Address</label>
+            </floating-label>
+          </div>
+
+          <div>
+            <floating-label class="block mt-4">
+              <input type="text" x-model="$store.user.address.city" id="city" name="city" autocomplete="address-level2"  class="block w-full rounded-md shadow-sm" placeholder="City"/>
+              <label for="city"  class="">City</label>
+            </floating-label>
+          </div>
+
+          <div>
+            <floating-label class="block mt-4">
+              <input type="text" x-model="$store.user.address.state" id="region" name="region" autocomplete="address-level1"  class="block w-full rounded-md shadow-sm" placeholder="State / Province"/>
+              <label for="region"  class="">State</label>
+            </floating-label>
+          </div>
+
+          <div>
+            <floating-label class="block mt-4">
+              <input type="text" x-model="$store.user.address.zip" id="postal-code" name="postal-code" autocomplete="postal-code"  class="block w-full rounded-md shadow-sm" placeholder="Postal code"/>
+              <label for="postal-code"  class="">Postal code</label>
+            </floating-label>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="billing-heading" class="mt-10">
+        <h2 id="billing-heading" class="text-lg font-medium text-gray-900">Billing information</h2>
+
+        <div class="flex items-center mt-6">
+          <input id="same-as-shipping" name="same-as-shipping" type="checkbox" checked class="w-4 h-4 border-gray-300 rounded text-emerald-600 focus:ring-emerald-500" />
+          <div class="ml-2">
+            <label for="same-as-shipping" class="text-sm font-medium text-gray-900">Same as shipping information</label>
+          </div>
+        </div>
+      </section>
+
+      <div class="pt-6 mt-10 border-t border-gray-200 sm:flex sm:items-center sm:justify-between">
+        <button
+          @click.prevent.stop="$store.user.genID(); window.location='/review'"
+          class="w-full px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-emerald-500 sm:ml-6 sm:order-last sm:w-auto"
+        >
+          Continue
+        </button>
+        <p class="mt-4 text-sm text-center text-gray-500 sm:mt-0 sm:text-left">You won't be charged at all because this is a fake checkout.</p>
+      </div>
+    </div>
+  </form>
+</div>

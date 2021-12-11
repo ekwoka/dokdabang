@@ -7,13 +7,55 @@
 }
 
 progress.review-bar[value] {
-  @apply appearance-none w-full h-3 rounded-md overflow-hidden shadow-inner border border-yellow-500
+  @apply w-full h-3 overflow-hidden border border-yellow-500 rounded-md shadow-inner appearance-none;
 }
 
 progress.review-bar[value]::-webkit-progress-bar {
-  @apply bg-gray-100 
+  @apply bg-gray-100;
 }
 
 progress.review-bar[value]::-webkit-progress-value {
-  @apply bg-yellow-500 rounded-md
+  @apply bg-yellow-500 rounded-md;
+}
+
+floating-label {
+  @apply relative mt-4;
+}
+
+floating-label input[type='text'],
+floating-label input[type='email'],
+floating-label input[type='search'] {
+  @apply w-full placeholder-transparent border border-b-2 focus:outline-none focus:ring-0 border-emerald-600 ;
+}
+
+floating-label input[type='text']:placeholder-shown,
+floating-label input[type='email']:placeholder-shown,
+floating-label input[type='search']:placeholder-shown {
+  @apply border-gray-300;
+}
+
+floating-label input[type='text']:focus,
+floating-label input[type='email']:focus,
+floating-label input[type='search']:focus {
+  @apply border-emerald-600 shadow-emerald-600/30;
+}
+
+floating-label input[type='text']:placeholder-shown ~ label,
+floating-label input[type='email']:placeholder-shown ~ label,
+floating-label input[type='search']:placeholder-shown ~ label {
+  @apply text-base font-normal text-gray-600 top-2 left-2;
+}
+
+floating-label input[type='text']:focus ~ label,
+floating-label input[type='email']:focus ~ label,
+floating-label input[type='search']:focus ~ label {
+  @apply left-0 text-sm font-medium text-gray-800 -top-5;
+}
+
+floating-label label {
+  @apply absolute left-0 w-full text-sm font-medium text-gray-800 transition-all pointer-events-none -top-5 min-w-max;
+}
+
+floating-label ~ button {
+  @apply md:mt-4;
 }

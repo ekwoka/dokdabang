@@ -23,7 +23,7 @@ pageTypes.forEach(({type, pages = [], path = ''}) => {
         let outputPath = `src/${path}${typeof page === 'object'?page.handle:page}.html`
         let output = createWriteStream(outputPath);
         let pageData = {
-            settings: {...data.global} || {},
+            settings: {...data.global, type} || {},
             template: {...data[type]} || {},
             page: {...page} || {}
         }

@@ -1,23 +1,26 @@
 <header-ui class="block bg-white" x-data="header">
 
-    <nav-wrapper class="fixed inset-0 z-40 flex lg:hidden" role="dialog" aria-modal="true" x-show="mobileMenuOpen" x-cloak :aria-expanded="mobileMenuOpen">
+  {%- unless settings.type == 'checkout' -%}
+  <nav-wrapper class="fixed inset-0 z-40 flex lg:hidden" role="dialog" aria-modal="true" x-show="mobileMenuOpen" x-cloak :aria-expanded="mobileMenuOpen">
 
-      <drawer-backdrop class="fixed inset-0 block bg-black bg-opacity-60 backdrop-saturate-100" aria-hidden="true" x-show="mobileMenuOpen" x-cloak
-        x-transition:enter="transition-all ease-out duration-500"
-        x-transition:enter-start="opacity-0 backdrop-saturate-0"
-        x-transition:enter-end="opacity-100 backdrop-saturate-100"
-        x-transition:leave="transition-all ease-in duration-300"
-        x-transition:leave-start="opacity-100 backdrop-saturate-100"
-        x-transition:leave-end="opacity-0 backdrop-saturate-0"></drawer-backdrop>
+    <drawer-backdrop class="fixed inset-0 block bg-black bg-opacity-60 backdrop-saturate-100" aria-hidden="true" x-show="mobileMenuOpen" x-cloak
+      x-transition:enter="transition-all ease-out duration-500"
+      x-transition:enter-start="opacity-0 backdrop-saturate-0"
+      x-transition:enter-end="opacity-100 backdrop-saturate-100"
+      x-transition:leave="transition-all ease-in duration-300"
+      x-transition:leave-start="opacity-100 backdrop-saturate-100"
+      x-transition:leave-end="opacity-0 backdrop-saturate-0"></drawer-backdrop>
 
-        {%- render 'mobile-drawer', settings: settings -%}
-        
-    </nav-wrapper>
+      {%- render 'mobile-drawer', settings: settings -%}
+      
+  </nav-wrapper>
+    
+  {%- endunless -%}
   
     <header class="relative">
       <nav aria-label="Top">
 
-        <top-banner class="block bg-gray-900">
+        <top-banner class="block bg-emerald-900">
           <div class="flex items-center justify-center h-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <span class="text-base font-medium tracking-wider text-white hover:text-gray-100">Welcome to DokDaBang</a>
           </div>
@@ -28,16 +31,14 @@
           <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="border-b border-gray-200">
               <div class="flex items-center justify-between h-16">
-                <!-- Logo (lg+) -->
                 <div class="hidden lg:flex-1 lg:flex lg:items-center">
-                  <a href="#">
-                    <span class="sr-only">Workflow</span>
-                    <img class="w-auto h-8" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=emerald&shade=600" alt="">
+                  <a href="/">
+                    <span class="sr-only">Dokdabang</span>
+                    <span class="text-3xl font-medium leading-loose uppercase text-emerald-600">Dokdabang</span>
                   </a>
                 </div>
   
                 <div class="hidden h-full lg:flex">
-                  <!-- Flyout menus -->
                   <div class="inset-x-0 bottom-0 z-10 px-4">
                     <div class="flex justify-center h-full space-x-8" x-data="tabs" @click.away="selectedTab='none'">
 
@@ -51,32 +52,23 @@
                     </div>
                   </div>
                 </div>
-  
-                <!-- Mobile menu and search (lg-) -->
+
                 <div class="flex items-center flex-1 lg:hidden">
-                  <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. -->
+                  {%- unless settings.type == 'checkout' -%}
                   <button type="button" class="p-2 -ml-2 text-gray-400 bg-white rounded-md" @click="mobileMenuOpen=true">
                     <span class="sr-only">Open menu</span>
-                    <!-- Heroicon name: outline/menu -->
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                   </button>
+                    
+                  {%- endunless -%}
   
-                  <!-- Search -->
-                  <a href="#" class="hidden p-2 ml-2 text-gray-400 hover:text-gray-500">
-                    <span class="sr-only">Search</span>
-                    <!-- Heroicon name: outline/search -->
-                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                  </a>
                 </div>
   
-                <!-- Logo (lg-) -->
-                <a href="#" class="lg:hidden">
-                  <span class="sr-only">Workflow</span>
-                  <img src="https://tailwindui.com/img/logos/workflow-mark.svg?color=emerald&shade=600" alt="" class="w-auto h-8">
+                <a href="/" class="lg:hidden">
+                  <span class="sr-only">Dokdabang</span>
+                  <span class="text-2xl font-medium leading-loose uppercase text-emerald-600">Dokdabang</span>
                 </a>
   
                 <div class="flex items-center justify-end flex-1">
@@ -85,16 +77,7 @@
                   </a>
   
                   <div class="flex items-center lg:ml-8">
-                    <!-- Help -->
-                    <a href="#" class="p-2 text-gray-400 hover:text-gray-500 lg:hidden">
-                      <span class="sr-only">Help</span>
-                      <!-- Heroicon name: outline/question-mark-circle -->
-                      <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </a>
-                    <a href="#" class="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">Help</a>
-  
+                    {%- unless settings.type == 'checkout' -%}
                     <div class="flow-root ml-4 lg:ml-8">
                       <a href="#" class="flex items-center p-2 -m-2 group" @click.prevent="$store.cartIsOpen=true">
                         <svg class="flex-shrink-0 w-6 h-6 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -104,6 +87,7 @@
                         <span class="sr-only">items in cart, view bag</span>
                       </a>
                     </div>
+                    {%- endunless -%}
                   </div>
                 </div>
               </div>
@@ -113,7 +97,9 @@
       </nav>
     </header>
 
-    {%- render 'side-cart', settings: settings -%}
+    {%- unless settings.type == 'checkout' -%}
+    {%- render 'side-cart', settings: settings -%}              
+    {%- endunless -%}
 
   </header-ui>
   

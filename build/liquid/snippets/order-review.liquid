@@ -1,0 +1,87 @@
+
+    <div class="overflow-hidden h-80 lg:absolute lg:w-1/2 lg:h-full lg:pr-4 xl:pr-12">
+      <img x-data x-rias="'/assets/images/dokdabangcard.png'" alt="DokDaBang" class="object-cover object-center w-full h-full">
+    </div>
+  
+    <div x-data="review">
+      <div class="max-w-2xl px-4 py-4 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:py-32 lg:grid lg:grid-cols-2 lg:gap-x-8 xl:gap-x-24">
+        <div class="lg:col-start-2">
+          <h1 class="text-lg font-medium text-emerald-600">Payment successful</h1>
+          <p class="mt-2 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">Thanks for ordering</p>
+          <p class="mt-2 text-base text-gray-700">We appreciate your order, we’re currently processing it. So hang tight and your drinks will be on your way soon!</p>
+          <p class="mt-2 text-base text-gray-700">We'll send a confirmation email to <span class="font-medium text-emerald-600" x-text="$store.user.email"></span> shortly.</p>
+  
+          <dl class="mt-16 text-sm font-medium">
+            <dt class="text-gray-900">Order No.</dt>
+            <dd class="mt-2 text-emerald-600" x-text="id"></dd>
+          </dl>
+  
+          <order-contents role="list" class="block text-sm font-medium text-gray-900 divide-y divide-gray-200">
+            <template x-for="(item, index) in items" :key="index">
+              <order-item class="flex items-start py-6 space-x-4">
+                <item-image class="flex-shrink-0 block w-24 h-24 overflow-hidden border border-gray-200 rounded-md">
+                  <img x-rias="item.image" :alt="item.title" class="object-cover object-center w-full h-full" />
+                </item-image>
+                <div class="flex-auto space-y-1">
+                  <h3 x-text="item.title"></h3>
+                  <p class="text-gray-700 capitalize" x-text="item.variant" x-show="item.variant"></p>
+                  <p class="text-gray-700" x-text="`Qty ${item.quantity}`">Qty 1</p>
+                </div>
+                <p class="flex-none text-base font-medium" x-text="format(item.price*item.quantity)"></p>
+              </order-item>
+            </template>
+          </order-contents>
+  
+          <dl class="pt-6 space-y-6 text-sm font-medium text-gray-700 border-t border-gray-200">
+            <div class="flex justify-between">
+              <dt>Subtotal</dt>
+              <dd class="text-gray-900" x-text="format(total)"></dd>
+            </div>
+  
+            <div class="flex justify-between">
+              <dt>Delivery Fee</dt>
+              <dd class="text-gray-900" x-text="format(5000)"></dd>
+            </div>
+  
+            <div class="flex items-center justify-between pt-6 text-gray-900 border-t border-gray-200">
+              <dt class="text-base">Total</dt>
+              <dd class="text-base" x-text="format(total+5000)"></dd>
+            </div>
+          </dl>
+  
+          <dl class="grid grid-cols-2 mt-16 text-sm text-gray-600 gap-x-4">
+            <div>
+              <dt class="font-medium text-gray-900">Delivery Address</dt>
+              <dd class="mt-2">
+                <address class="not-italic">
+                  <span class="block" x-text="$store.user.name"></span>
+                  <span class="block" x-text="$store.user.address.street"></span>
+                  <span class="block" x-text="`${$store.user.address.city}, ${$store.user.address.state.toUpperCase()} ${$store.user.address.zip}`"></span>
+                </address>
+              </dd>
+            </div>
+            <div>
+              <dt class="font-medium text-gray-900">Payment Information</dt>
+              <dd class="mt-2 space-y-2 sm:flex sm:space-y-0 sm:space-x-4">
+                <div class="flex-none">
+                  <svg aria-hidden="true" width="36" height="24" viewBox="0 0 36 24" xmlns="http://www.w3.org/2000/svg" class="w-auto h-6">
+                    <rect width="36" height="24" rx="4" fill="#224DBA" />
+                    <path d="M10.925 15.673H8.874l-1.538-6c-.073-.276-.228-.52-.456-.635A6.575 6.575 0 005 8.403v-.231h3.304c.456 0 .798.347.855.75l.798 4.328 2.05-5.078h1.994l-3.076 7.5zm4.216 0h-1.937L14.8 8.172h1.937l-1.595 7.5zm4.101-5.422c.057-.404.399-.635.798-.635a3.54 3.54 0 011.88.346l.342-1.615A4.808 4.808 0 0020.496 8c-1.88 0-3.248 1.039-3.248 2.481 0 1.097.969 1.673 1.653 2.02.74.346 1.025.577.968.923 0 .519-.57.75-1.139.75a4.795 4.795 0 01-1.994-.462l-.342 1.616a5.48 5.48 0 002.108.404c2.108.057 3.418-.981 3.418-2.539 0-1.962-2.678-2.077-2.678-2.942zm9.457 5.422L27.16 8.172h-1.652a.858.858 0 00-.798.577l-2.848 6.924h1.994l.398-1.096h2.45l.228 1.096h1.766zm-2.905-5.482l.57 2.827h-1.596l1.026-2.827z" fill="#fff" />
+                  </svg>
+                  <p class="sr-only">Visa</p>
+                </div>
+                <div class="flex-auto">
+                  <p class="text-gray-900">Ending with 4242</p>
+                  <p>Expires 12 / 22</p>
+                </div>
+              </dd>
+            </div>
+          </dl>
+  
+          <div class="py-6 mt-16 text-right border-t border-gray-200">
+            <a href="/" class="text-sm font-medium text-emerald-600 hover:text-emerald-500">Continue Shopping<span aria-hidden="true"> &rarr;</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  

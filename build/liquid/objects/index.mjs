@@ -13,5 +13,13 @@ export default [
     {
         type: 'collection',
         pages: ['menu']
+    },
+    {
+        type: 'checkout',
+        pages: ['checkout']
+    },
+    {
+        type: 'review',
+        pages: ['review']
     }
 ]

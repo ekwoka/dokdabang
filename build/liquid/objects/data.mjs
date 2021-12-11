@@ -28,19 +28,24 @@ export const index = {
     paragraph: 'Seriously we have really great stuff. Dont believe us? check this out!',
     items: [
       {
-        title: 'Feature One',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.',
-        image: 'https://placekitten.com/400/400'
+        title: 'Dang Tasty Drinks!!!',
+        content: 'We make frikken tasty drinks! Full of great Coffee harvested by children in misquito infested jungles somewhere near the equator, the taste of despair and hope is unmatched!',
+        image: '/assets/images/cafe-latte.jpg'
       },
       {
-        title: 'Feature Two',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.',
-        image: 'https://placekitten.com/401/401'
+        title: '2000+ Happy Customers',
+        content: 'Rated ⭐️⭐️⭐️⭐️⭐️ by the 180% of hipsters while listening to bands you have never heard of!',
+        image: '/assets/images/espresso.jpg'
       },
       {
-        title: 'Feature Three',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.',
-        image: 'https://placekitten.com/402/402'
+        title: 'This one is green!!',
+        content: 'We are a green coffee shop! We are not a coffee shop! We are a green coffee shop! We are not a coffee shop! We are a green coffee shop! We are not a coffee shop!',
+        image: '/assets/images/green-tea-latte.jpg'
+      },
+      {
+        title: 'I let Copilot write this one',
+        content: 'Coffee is the best thing since sliced bread! Seriously, we are the best! You should try us! This is the best coffee shop in the world! Made with love by the best coffee shop in the world!',
+        image: '/assets/images/macchiato.jpg'
       }
     ]
   }
