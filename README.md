@@ -5,6 +5,8 @@
 
 > Simple Food Storefront website built with TailwindCSS, AlpineJS, and LiquidJS templating.
 
+> This uses a custom static site generator to build the site from Liquid templates. Whole process built from scratch.
+
 ### ✨ [Demo](https://dokdabang.netlify.app)
 
 ## Install
