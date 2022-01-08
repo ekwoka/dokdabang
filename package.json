@@ -10,7 +10,7 @@
     "watch:js": "esbuild ./build/in.js --platform=browser --target=es2017 --outfile=./src/assets/build.min.js --bundle --watch --define:ALPINE_VERSION='\"CUSTOM\"' --define:DEBUG_ON='true'",
     "watch:css": "tailwindcss -i ./build/styles.pre.css -o ./src/assets/styles.min.css --jit -w --config tailwind.config.js",
     "watch:netlify": "netlify dev",
-    "update": "ncu -u && rm -rf node_modules && pnpm i && npm run build && git add . && git commit -m ':arrow_up:' && npm version patch"
+    "update": "ncu -u && pnpm i && npm run build && git add . && git commit -m ':arrow_up:' && npm version patch"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",
@@ -21,7 +21,7 @@
     "liquidjs": "^9.32.0",
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
-    "tailwindcss": "^3.0.9"
+    "tailwindcss": "^3.0.12"
   },
   "dependencies": {
     "@alpinejs/collapse": "^3.7.1",
@@ -30,7 +30,7 @@
     "@ekwoka/persistedstore": "^0.1.1",
     "@ekwoka/x-rias": "^0.2.3",
     "alpinejs": "^3.7.1",
-    "autoprefixer": "^10.4.1",
+    "autoprefixer": "^10.4.2",
     "node-fetch": "^3.1.0",
     "postcss": "^8.4.5"
   },
