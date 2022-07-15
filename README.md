@@ -9,17 +9,6 @@
 
 ### ✨ [Demo](https://dokdabang.netlify.app)
 
-## Install
-
-```sh
-pnpm i
-```
-
-## Usage
-
-```sh
-npm run build
-```
 
 ## Author
 
